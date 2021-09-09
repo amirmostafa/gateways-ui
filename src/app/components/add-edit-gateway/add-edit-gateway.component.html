@@ -1,0 +1,32 @@
+<mat-card>
+  <mat-card-title class="mx-2">
+    <label *ngIf="isEdit">Edit Gateway</label>
+    <label *ngIf="!isEdit">Add Gateway</label>
+  </mat-card-title>
+  <form [formGroup]="form" (submit)="save()">
+    <mat-card-content>
+      <mat-form-field appearance="fill">
+        <mat-label>Serial No.</mat-label>
+        <input matInput [formControl]="form.get('serialNumber')">
+        <mat-error *ngIf="form.get('serialNumber').errors?.required">Required</mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Name</mat-label>
+        <input matInput [formControl]="form.get('name')">
+        <mat-error *ngIf="form.get('name').errors?.required">Required</mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Ipv4</mat-label>
+        <input matInput [formControl]="form.get('ipv4')">
+        <mat-error *ngIf="form.get('ipv4').errors?.required">Required</mat-error>
+        <mat-error *ngIf="form.get('ipv4').errors?.pattern">Invalid address pattern</mat-error>
+      </mat-form-field>
+    </mat-card-content>
+    <mat-card-footer class="d-flex justify-content-end pb-1">
+      <button mat-button color="primary" type="submit">Save</button>
+      <button mat-button color="accent" type="button" (click)="cancel()">Cancel</button>
+    </mat-card-footer>
+  </form>
+</mat-card>

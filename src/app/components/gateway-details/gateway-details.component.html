@@ -1,0 +1,29 @@
+<mat-card>
+  <mat-card-title class="mx-2">
+    <button mat-icon-button color="primary" (click)="back()">
+      <mat-icon class="mb-2">keyboard_backspace</mat-icon>
+    </button>
+    <label>Gateway Details</label>
+  </mat-card-title>
+  <mat-card-content>
+    <mat-card>
+      <mat-card-content class="d-flex">
+        <div class="col-4">
+          <label class="text-primary mx-2">Serial Number:</label>
+          <label>{{gateway?.serialNumber}}</label>
+        </div>
+        <div class="col-4">
+          <label class="text-primary mx-2">Name:</label>
+          <label>{{gateway?.name}}</label>
+        </div>
+        <div class="col-4">
+          <label  class="text-primary mx-2">Ipv4:</label>
+          <label>{{gateway?.ipv4}}</label>
+        </div>
+      </mat-card-content>
+    </mat-card>
+
+
+    <app-devices *ngIf="gateway" [devices]="gateway.devices" [serialNumber]="serialNumber"></app-devices>
+  </mat-card-content>
+</mat-card>
